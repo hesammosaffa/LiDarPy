@@ -1,0 +1,5 @@
+[project]
+name = "PySide Project"
+
+[tool.pyside6-project]
+files = ["app/lidar_view.py", "app/widgets.py", "bridge/rs_bridge.cp312-win_amd64.pyd", "main.py", "main_code.py", "ui/mainwindow.ui"]

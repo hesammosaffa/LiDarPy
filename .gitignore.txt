@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env (در D:\dev\Qt_py_cpp\lidarPy\.venv است، برای امنیت هم اینجا)
+.venv/
+
+# Build output of rs_bridge
+bridge/build/
+*.pyd
+*.so
+
+# rs_driver SDK (کد third-party، جدا نگه داشته می‌شود)
+third_party/
+
+# Qt Creator: تنظیمات شخصی هر کاربر
+*.user
+*.user.*
+.qtcreator/
+
+# فایل‌های موقت و zip
+*.zip
+*.log

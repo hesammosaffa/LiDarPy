@@ -1,0 +1,3 @@
+D:/dev/Qt_py_cpp/lidarPy_app/bridge/build/CMakeFiles/rs_bridge.dir
+D:/dev/Qt_py_cpp/lidarPy_app/bridge/build/CMakeFiles/edit_cache.dir
+D:/dev/Qt_py_cpp/lidarPy_app/bridge/build/CMakeFiles/rebuild_cache.dir

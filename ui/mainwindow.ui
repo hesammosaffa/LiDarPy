@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1100</width><height>700</height></rect></property>
+  <property name="windowTitle"><string>Lidar Tracker</string></property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="rootLayout">
+    <item>
+     <widget class="LidarView" name="lidarView" native="true">
+      <property name="sizePolicy"><sizepolicy hsizetype="Expanding" vsizetype="Expanding"><horstretch>1</horstretch><verstretch>0</verstretch></sizepolicy></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="sidePanel" native="true">
+      <property name="minimumSize"><size><width>280</width><height>0</height></size></property>
+      <property name="maximumSize"><size><width>340</width><height>16777215</height></size></property>
+      <layout class="QVBoxLayout" name="sideLayout">
+    <item>
+     <layout class="QHBoxLayout">
+      <item><widget class="QLabel" name="swSearchLabel"><property name="text"><string>Search (on = probe off)</string></property></widget></item>
+      <item><spacer name="swSearchSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item><widget class="ToggleSwitch" name="swSearch" native="true"/></item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout">
+      <item><widget class="QLabel" name="swStaticLabel"><property name="text"><string>Hide Static</string></property></widget></item>
+      <item><spacer name="swStaticSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item><widget class="ToggleSwitch" name="swStatic" native="true"/></item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout">
+      <item><widget class="QLabel" name="swFireLabel"><property name="text"><string>Fire</string></property></widget></item>
+      <item><spacer name="swFireSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item><widget class="ToggleSwitch" name="swFire" native="true"/></item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="rangeLayout">
+      <item><widget class="QLabel" name="rangeLabel"><property name="text"><string>Range</string></property></widget></item>
+      <item><spacer name="rangeSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item><widget class="QSpinBox" name="rangeSpin"><property name="minimum"><number>10</number></property><property name="maximum"><number>500</number></property><property name="value"><number>100</number></property><property name="suffix"><string> m</string></property></widget></item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize"><size><width>80</width><height>80</height></size></property>
+      <property name="maximumSize"><size><width>80</width><height>80</height></size></property>
+      <property name="text"><string>FIRE</string></property>
+      <property name="styleSheet"><string notr="true">QPushButton { background-color:#3A3A3C; color:white; border:2px solid #5A5A5C; border-radius:40px; font-weight:bold; }
+QPushButton:pressed { background-color:#FF3B30; border-color:#FF3B30; }</string></property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gaugeGrid">
+     <item row="0" column="0">
+      <widget class="GaugePanel" name="gVx" native="true">
+       <property name="title"><string>vx</string></property>
+       <property name="minimum"><double>-20</double></property>
+       <property name="maximum"><double>20</double></property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="GaugePanel" name="gVy" native="true">
+       <property name="title"><string>vy</string></property>
+       <property name="minimum"><double>-20</double></property>
+       <property name="maximum"><double>20</double></property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="GaugePanel" name="gVz" native="true">
+       <property name="title"><string>vz</string></property>
+       <property name="minimum"><double>-20</double></property>
+       <property name="maximum"><double>20</double></property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="GaugePanel" name="gV" native="true">
+       <property name="title"><string>v</string></property>
+       <property name="minimum"><double>0</double></property>
+       <property name="maximum"><double>20</double></property>
+      </widget>
+     </item>
+     </layout>
+    </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget><class>LidarView</class><extends>QWidget</extends><header>lidarwidget.h</header><container>1</container></customwidget>
+  <customwidget><class>ToggleSwitch</class><extends>QWidget</extends><header>toggleswitch.h</header><container>1</container></customwidget>
+  <customwidget><class>GaugePanel</class><extends>QWidget</extends><header>gaugewidget.h</header><container>1</container></customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
