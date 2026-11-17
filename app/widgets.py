@@ -56,12 +56,18 @@ class GaugeDial(QWidget):
     def __init__(self, title, unit, lo, hi, parent=None):
         super().__init__(parent)
         self.title, self.unit, self.lo, self.hi, self.value = title, unit, lo, hi, lo
+        self.START, self.SWEEP = GaugeDial.START, GaugeDial.SWEEP  # per-instance arc
         self.setMinimumSize(90, 90)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
     def set_range(self, lo, hi):
         self.lo, self.hi = lo, hi
         self.value = min(max(self.value, lo), hi)
+        self.update()
+
+    def set_arc(self, start, sweep):
+        """Arc in degrees, clockwise from 12 o'clock. Value lo maps to start."""
+        self.START, self.SWEEP = float(start), float(sweep)
         self.update()
 
     def set_value(self, v):
@@ -118,7 +124,7 @@ class GaugeDial(QWidget):
 
 
 class GaugePanel(QWidget):
-    def __init__(self, title="v", unit="m/s", lo=-20.0, hi=20.0, parent=None):
+    def __init__(self, title="v", unit="°", lo=-180.0, hi=180.0, parent=None):
         super().__init__(parent)
         self.unit = unit
         self.dial = GaugeDial(title, unit, lo, hi, self)
@@ -143,6 +149,9 @@ class GaugePanel(QWidget):
     title = Property(str, _get_title, _set_title)
     minimum = Property(float, _get_min, _set_min)
     maximum = Property(float, _get_max, _set_max)
+
+    def set_arc(self, start, sweep):
+        self.dial.set_arc(start, sweep)
 
     def set_value(self, v):
         self.dial.set_value(v)

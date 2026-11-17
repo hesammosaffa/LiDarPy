@@ -21,3 +21,9 @@ third_party/
 # فایل‌های موقت و zip
 *.zip
 *.log
+
+*_log.txt
+*_log.txt
+.env
+__pycache__/
+.qtcreator/
