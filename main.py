@@ -12,6 +12,9 @@ from luncherController.LCS import LCS
 import luncherController.LCS as lcs_mod
 from pid.PID import PanTiltPID
 from config import cfg
+from panel.launcher_buttons import connect_buttons
+from panel.feedback import show_feedback, color_buttons
+
 
 
 UI = Path(__file__).resolve().parent / "ui" / "mainwindow.ui"
@@ -65,6 +68,11 @@ def main():
         fcs=fcs_rx,
     )
     lcs.start()
+
+    connect_buttons(ui, lcs._sender)
+    show_feedback(fcs_rx)
+    color_buttons(ui, fcs_rx)
+
 
     rangeSpin = ui("rangeSpin")
     swSearch.toggled.connect(lambda on: view.set_probe_enabled(not on))
