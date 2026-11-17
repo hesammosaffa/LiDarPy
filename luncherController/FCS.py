@@ -60,6 +60,7 @@ def FCS(data: bytes) -> dict:
 import time
 
 from udp.UDPReceiver import UDPReceiver
+from config import cfg
 
 
 def format_fcs(fields: dict) -> str:
@@ -81,6 +82,7 @@ class FcsReceiver:
 
     def __init__(self, bind_ip="", port=5005, log_path=None):
         self._log_path = log_path
+        self._log_enabled = cfg("LOG_ENABLED", True)
         self.last = None  # latest decoded packet (dict), read by LCS
         self._rx = UDPReceiver(bind_ip, port, on_packet=self._on_packet)
 
@@ -95,7 +97,9 @@ class FcsReceiver:
         self._rx.stop()
 
     def _log(self, line):
-        # print(line, flush=True)
+        if not self._log_enabled:
+            return
+        print(line, flush=True)
         if self._log_path:
             with open(self._log_path, "a", encoding="ascii", errors="replace") as f:
                 f.write(line + "\n")
